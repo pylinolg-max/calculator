@@ -33,3 +33,20 @@ jobs:
       # Запуск модульных тестов
       - name: Запуск тестов калькулятора
         run: python -m unittest discover -v
+  
+  # Автоматическое слияние после успешного тестирования
+  auto_merge:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Автоматическое слияние PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --merge "$PR_URL"
