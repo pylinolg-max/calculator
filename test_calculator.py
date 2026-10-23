@@ -22,9 +22,6 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             divide(10, 0)    
    
-    def test_demo_failure(self):
-        self.assertEqual(add(5, 3), 9)
-
 # Запуск тестов
 
 if __name__ == "__main__":
