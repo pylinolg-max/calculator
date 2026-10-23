@@ -33,6 +33,14 @@ jobs:
       # Запуск модульных тестов
       - name: Запуск тестов калькулятора
         run: python -m unittest discover -v
+      - name: Генерация HTML-документации
+        run: python -m pydoc -w calculator
+
+      - name: Сохранение документации
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-docs
+          path: calculator.html  
   
   # Автоматическое слияние после успешного тестирования
   auto_merge:
