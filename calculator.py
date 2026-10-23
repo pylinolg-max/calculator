@@ -1,19 +1,25 @@
 VERSION = "1.0.0"
 # Функции арифметических операций
-
 def add(a, b):
+    """Возвращает сумму двух чисел."""
     return a + b
 
 
 def subtract(a, b):
+    """Возвращает разность двух чисел."""
     return a - b
 
 
 def multiply(a, b):
+    """Возвращает произведение двух чисел."""
     return a * b
 
 
 def divide(a, b):
+    """Возвращает результат деления a на b.
+
+    При делении на ноль вызывает ValueError.
+    """
     if b == 0:
         raise ValueError("Деление на ноль")
     return a / b
